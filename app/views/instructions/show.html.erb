@@ -1,0 +1,35 @@
+<div class="row display">
+  <div class="small-3 columns left">
+     <p> < Previous</p>
+  </div>
+  <div class="small-6 columns">
+     
+      <div class="progress ">
+        <span id="progress" class="meter" style="width:10%"></span>
+      </div>
+  </div>
+  <div class="small-3 columns right">
+      
+       <p class="right">Next > </p>
+  </div>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Step:</b>
+  <%= @instruction.step %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @instruction.title %>
+</p>
+
+<p>
+  <b>Content:</b><br>
+  <%= @instruction.content.html_safe %>
+</p>
+
+<%= link_to 'Edit', edit_instruction_path(@instruction) %> |
+<%= link_to 'Back', instructions_path %>

@@ -1,0 +1,19 @@
+<h1>
+  <strong>Title:</strong>
+  <%= @comment.title %>
+</h1>
+ 
+<h1>
+  <strong>Text:</strong>
+  <%= @comment.text %>
+</h1>
+
+<h2>Replies</h2>
+<%= render @comment.replies %>
+ 
+<h2>Add a reply:</h2>
+<%= render "replies/form" %>
+
+<%= link_to 'Edit Comment', edit_comment_path(@comment) %> |
+<%= link_to 'Back to Comments', comments_path %>
+

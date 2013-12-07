@@ -1,0 +1,49 @@
+<div class="small-8 small-centered columns">
+  <h1>Edit Profile</h1>
+  <div class="row collapse">
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <%= devise_error_messages! %>
+
+      <h2 class="large-12 columns">Basic Updates:</h2>
+      <div class="large-2 columns"><%= f.label :username, :class => "inline" %></div>
+      <div class="large-10 columns"><%= f.text_field :username %></div>
+
+      <div class="large-2 columns"><%= f.label :bio, :class => "inline" %></div>
+      <div class="large-10 columns"><%= f.text_field :bio %></div>
+
+      <div class="large-2 columns"><%= f.label :location, :class => "inline" %></div>
+      <div class="large-10 columns"><%= f.text_field :location %></div>
+  </div>
+  <dl class="accordion" data-accordion>
+    <dd>
+      <a href="#panel">Advanced Updates</a>
+      <div id="panel" class="content row collapse">
+        <div class="large-2 columns"><%= f.label :email, :class => "inline" %></div>
+        <div class="large-10 columns"><%= f.email_field :email %></div>
+
+        <div class="large-2 columns"><%= f.label :new_password, :class => "inline" %></div>
+        <div class="large-10 columns"> <%= f.password_field :password, :autocomplete => "off" %></div>
+
+
+        <div class="large-2 columns"><%= f.label :password_confirmation, :class => "inline" %></div>
+        <div class="large-10 columns"> <%= f.password_field :password_confirmation %></div>
+
+
+      </div>
+    </dd>
+  </dl>
+      <div class="large-2 columns"><%= f.label :current_password, :class => "inline" %></div>
+      <div class="large-10 columns"> <%= f.password_field :current_password %></div>
+      <div><%= f.submit "Update",  :class => "button" %></div>
+
+    <% end %>
+ 
+
+<hr>
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
+
+<%= link_to "Back", :back %>
+</div>
+ </div>

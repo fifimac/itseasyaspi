@@ -1,0 +1,36 @@
+<div class="row display">
+  <div class="small-3 columns left">
+    
+      <% if @instructions.previous_page %>
+        <%= link_to "< Previous", params.merge(page: @instructions.previous_page),:class => "left" %>
+
+      <% end %>
+  </div>
+  <div class="small-6 columns">
+     Page <%= @instructions.current_page %> of <%= @instructions.total_pages %>
+      <div class="progress ">
+        <span id="progress" class="meter" style="width:<%= percent %>%"></span>
+      </div>
+  </div>
+  <div class="small-3 columns right">
+       <% if @instructions.next_page %>
+        <%= link_to "Next >", params.merge(page: @instructions.next_page),:class => "right"%>
+      <% end %>
+  </div>
+</div>
+
+<% @instructions.each do |instruction| %>
+
+    <h2>Step: <%= instruction.step %></h2>
+    <h2><%= instruction.title %></h2>
+    <p><%= instruction.content.html_safe %></p>
+    <div><%= instruction.images %></div>
+    <div><%= link_to 'Show', instruction %></div>
+    <div><%= link_to 'Edit', edit_instruction_path(instruction) %></div>
+    <div><%= link_to 'Destroy', instruction, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+
+<% end %>
+
+<br />
+
+<%= link_to 'New Instruction', new_instruction_path %>
