@@ -23,12 +23,21 @@ class UserprofilesController < ApplicationController
 
   # GET /userprofiles/new
   # GET /userprofiles/new.json
-  def new
-    @userprofile = Userprofile.new
+  # def new
+  #   @userprofile = Userprofile.new
 
+  #   respond_to do |format|
+  #     format.html # new.html.erb
+  #     format.json { render json: @userprofile }
+  #   end
+  # 
+  def new
+    @user = User.find(current_user.id)
+    @userprofile = Userprofile.new
+    @userprofile.user_id = @user.id
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @userprofile }
+    format.html # new.html.erb
+    format.json { render json: @profile }
     end
   end
 
@@ -77,6 +86,18 @@ class UserprofilesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to userprofiles_url }
       format.json { head :no_content }
+    end
+  end
+
+  def myprofile
+    profile = Userprofile.find_by_user_id(current_user.id)
+
+    if profile.nil?
+      redirect_to "/userprofiles/new"
+    else
+      @user = User.find(current_user.id)
+      @userprofile = Userprofile.find_by_user_id(@user.id)
+      redirect_to "/userprofiles/#{@userprofile.id}"
     end
   end
 end

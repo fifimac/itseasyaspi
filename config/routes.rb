@@ -23,6 +23,7 @@ Itseasyaspi::Application.routes.draw do
   match '/about' => 'home#about'
   match '/glossary' => 'home#glossary'
   match '/userprofiles' => 'userprofiles#index'
+  match '/myprofile' => 'userprofiles#myprofile'  
 
  # match '/users/show' => 'devise/registrations#show'
   

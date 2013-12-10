@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   #this handles avatar upload in conjuction with carrierwave
   validates_presence_of :email
    # validates_presence_of :attribute, :on => :create , :message => "can't be black"
+  has_one :userprofiles
 end
 
 

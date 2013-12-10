@@ -15,9 +15,7 @@
           <div class="large-2 columns">Avatar:</div>
          <div class="large-10 columns"><%= image_tag @userprofile.avatar_url(:thumb).to_s %></div> 
        
-         <!--  <div class="large-2 columns">User:</div>
-          <div class="large-10 columns"><%= @userprofile.user_id %></div> -->
-       
+        
         <%= link_to 'Edit', edit_userprofile_path(@userprofile) %> |
         <%= link_to 'Back', userprofiles_path %>
     </div>
