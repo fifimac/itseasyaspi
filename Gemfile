@@ -23,6 +23,9 @@ end
 gem 'jquery-rails'
 gem 'devise'
 gem 'will_paginate', '> 3.0'
+gem 'strong_parameters'
+gem "mini_magick" # mini_magick is used in conjuction with carrierwave to resize images
+gem "carrierwave"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

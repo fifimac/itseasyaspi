@@ -9,10 +9,21 @@
 </h1>
 
 <h2>Replies</h2>
-<%= render @comment.replies %>
+
+<% if @comment.replies %>
+	<% @comment.replies.each do |reply|%>
+		<p><%= reply.body %>  <a href="#">- <%= reply.commenter %> </a></p>
+	<% end %>
+<% else %>
+<p> There are no replies yet </p>
+<% end %>
+
+
  
 <h2>Add a reply:</h2>
+
 <%= render "replies/form" %>
+<br>
 
 <%= link_to 'Edit Comment', edit_comment_path(@comment) %> |
 <%= link_to 'Back to Comments', comments_path %>

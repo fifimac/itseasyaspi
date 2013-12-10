@@ -54,12 +54,14 @@
    </div>
     <hr>
     <!-- end form -->
-    <div class="hide"></div>
-    <!-- start canvas -->
-    <canvas id="Canvas1" width="0" height="0" style="border:1px solid #cccccc;"></canvas><br/>
-    <canvas id="Canvas2" width="0" height="0" style="border:1px solid #cccccc;"></canvas><br/>
-    <canvas id="Canvas3" width="0" height="0" style="border:1px solid #cccccc;"></canvas>
 
+      <!-- start canvas -->
+      <h1>Canvas 150cm</h1>
+      <canvas id="Canvas1" width="0" height="0" style="border:1px solid #cccccc;"></canvas><br/>
+      <h1>Canvas 115cm</h1>
+      <canvas id="Canvas2" width="0" height="0" style="border:1px solid #cccccc;"></canvas><br/>
+      <h1>Canvas 90cm</h1>
+      <canvas id="Canvas3" width="0" height="0" style="border:1px solid #cccccc;"></canvas>
     <script>
           $(document).ready(function() {
             function patternMaker(){
@@ -261,6 +263,8 @@
                 console.log("displaymsg is already here");
                 $( "#displaymsg" ).replaceWith(displaymsgDIV);
               }
+
+             
             }
           $("#dress").on("submit", function(e){
             e.preventDefault();

@@ -1,0 +1,24 @@
+<div class="small-8 small-centered columns">
+     <div class="row collapse">
+         <div class="large-2 columns">Username:</div>
+         <div class="large-10 columns"><%= @userprofile.username %></div>
+    
+          <div class="large-2 columns">Location:</div>
+          <div class="large-10 columns"><%= @userprofile.location %></div>
+
+          <div class="large-2 columns">Bio:</div>
+          <div class="large-10 columns"><%= @userprofile.bio %></div>
+       
+          <div class="large-2 columns">Website:</div>
+          <div class="large-10 columns"><%= @userprofile.website %></div>
+       
+          <div class="large-2 columns">Avatar:</div>
+         <div class="large-10 columns"><%= image_tag @userprofile.avatar_url(:thumb).to_s %></div> 
+       
+         <!--  <div class="large-2 columns">User:</div>
+          <div class="large-10 columns"><%= @userprofile.user_id %></div> -->
+       
+        <%= link_to 'Edit', edit_userprofile_path(@userprofile) %> |
+        <%= link_to 'Back', userprofiles_path %>
+    </div>
+</div>

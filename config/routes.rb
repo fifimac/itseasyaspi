@@ -1,7 +1,17 @@
 Itseasyaspi::Application.routes.draw do
+  resources :userprofiles
+
+
+  resources :profiles
+
+
   devise_for :users
 
+  devise_scope :user do
+   match "/users/show" => "devise/registrations#show" 
+ end 
   resources :instructions
+
 
   resources :comments do
     resources :replies
@@ -12,6 +22,10 @@ Itseasyaspi::Application.routes.draw do
   match '/pattern_maker' => 'home#pattern_maker'
   match '/about' => 'home#about'
   match '/glossary' => 'home#glossary'
+  match '/userprofiles' => 'userprofiles#index'
+
+ # match '/users/show' => 'devise/registrations#show'
+  
   # match '/users/logout' => 'user#logout'
   # match '/logout' => 'user#logout'
   # The priority is based upon order of creation:

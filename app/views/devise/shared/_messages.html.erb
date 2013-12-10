@@ -1,5 +1,6 @@
 <% if alert || flash[:alert] || flash[:error] %>
-    <div class="alert alert-error">
+   <!--  <div class="alert alert-error"> -->
+    <div class="msg error">
       <a class="close" data-dismiss="alert" href="#">x</a>
       <h4 class="alert-heading">Error!</h4>
       <%= alert %>
@@ -7,7 +8,8 @@
     </div>
 <% end %>
 <% if model.errors.any? %>
-    <div class="alert alert-error">
+    <!-- <div class="alert alert-error "> -->
+    <div class="msg error">
       <a class="close" data-dismiss="alert" href="#">x</a>
       <h4 class="alert-heading">Error!</h4>
       <ul>
@@ -18,7 +20,8 @@
     </div>
 <% end %>
 <% if flash[:success] || notice || flash[:notice]%>
-    <div class="alert alert-success">
+    <!-- <div class="alert alert-success"> -->
+    <div class="msg error">
       <a class="close" data-dismiss="alert" href="#">x</a>
       <h4 class="alert-heading">Success!</h4>
       <%= flash[:success] %>

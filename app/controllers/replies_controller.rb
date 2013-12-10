@@ -1,13 +1,13 @@
 class RepliesController < ApplicationController
   #http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
 
-
   def create
+    #require "debugger" ; debugger
     @comment = Comment.find(params[:comment_id])
-    @reply = @comment.replies.create(params[:reply])
-     redirect_to comment_path(@comment)
+   #require "debugger" ; debugger
+    @reply = @comment.replies.create(reply_params)
+    redirect_to comment_path(@comment)
   end
-
 
   def destroy
     @comment = Comment.find(params[:comment_id])
@@ -17,8 +17,8 @@ class RepliesController < ApplicationController
   end
 
   private
-
-    def comment_params
+    def reply_params
       params.require(:reply).permit(:comment, :body)
     end
+
 end

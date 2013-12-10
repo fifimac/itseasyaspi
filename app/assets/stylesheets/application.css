@@ -44,3 +44,9 @@
 	background-color: #43ac6a;
 	border-color: #3c9a5e;
 }
+
+.img{
+  border: solid 4px white;
+  -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
