@@ -13,6 +13,17 @@ def title(page_title)
   end
 end
 
+
+
+	# def emptyVal(val)
+	# 	if val.blank?
+ #              Currently Blank, link_to 'Update?', edit_userprofile_path(@userprofile) 
+ #        else
+ #            val
+ #      	end
+ #    end
+	
+
 module UrlHelper
  
 end

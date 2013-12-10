@@ -1,22 +1,47 @@
 <div class="small-8 small-centered columns">
-     <div class="row collapse">
-         <div class="large-2 columns">Username:</div>
-         <div class="large-10 columns"><%= @userprofile.username %></div>
-    
-          <div class="large-2 columns">Location:</div>
-          <div class="large-10 columns"><%= @userprofile.location %></div>
+    <h1 class="large-12 columns"><%= @userprofile.username %>'s Profile</h1>
+    <br>
+    <table>
+      <tr>
+         <td><b>Location:</b></td>
+         <td>
+           <% if @userprofile.location.blank? %>
+              Currently Blank, <%= link_to 'Update?', edit_userprofile_path(@userprofile) %>
+            <% else %>
+              <%= @userprofile.location %>
+            <% end %>
+         </td>
+      </tr>
+      <tr>
+        <td><b>Bio:</b></td>
+        <td>
+          <% if @userprofile.bio.blank? %>
+              Currently Blank, <%= link_to 'Update?', edit_userprofile_path(@userprofile) %>
+          <% else %>
+              <%= @userprofile.bio %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td><b>Website:</b></td>
+        <td>
+         <% if @userprofile.website.blank? %>
+               Currently Blank, <%= link_to 'Update?', edit_userprofile_path(@userprofile) %>
+          <% else %>
+               <%= @userprofile.website %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td><b>Avatar:</b></td>
+        <td>  <%= image_tag @userprofile.avatar_url(:thumb).to_s %></td>
+      </tr>
+  </table>
 
-          <div class="large-2 columns">Bio:</div>
-          <div class="large-10 columns"><%= @userprofile.bio %></div>
-       
-          <div class="large-2 columns">Website:</div>
-          <div class="large-10 columns"><%= @userprofile.website %></div>
-       
-          <div class="large-2 columns">Avatar:</div>
-         <div class="large-10 columns"><%= image_tag @userprofile.avatar_url(:thumb).to_s %></div> 
-       
-        
-        <%= link_to 'Edit', edit_userprofile_path(@userprofile) %> |
-        <%= link_to 'Back', userprofiles_path %>
+        <hr>
+        <%= link_to 'Edit', edit_userprofile_path(@userprofile) , :class =>"button secondary" %> 
+        <%= link_to 'Back', userprofiles_path , :class =>"button secondary" %>
     </div>
 </div>
+
+
