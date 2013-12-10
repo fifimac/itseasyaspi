@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  image: MyString
+  submitted_by: 1
+  step: 1
+  user: 
+
+two:
+  image: MyString
+  submitted_by: 1
+  step: 1
+  user: 

@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   validates_presence_of :email
    # validates_presence_of :attribute, :on => :create , :message => "can't be black"
   has_one :userprofiles
+  has_many :galleries
 end
 
 

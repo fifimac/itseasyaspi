@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Image:</b>
+	<%= image_tag @gallery.image_url(:thumb_med) %>
+</p>
+
+<p>
+  <b>Submitted by:</b>
+  <%= @gallery.submitted_by %>
+</p>
+
+<p>
+  <b>Step:</b>
+  <%= @gallery.step %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_gallery_path(@gallery) %> |
+<%= link_to 'Back', galleries_path %>
