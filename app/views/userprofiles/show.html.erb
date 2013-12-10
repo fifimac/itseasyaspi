@@ -1,7 +1,18 @@
 <div class="small-8 small-centered columns">
-    <h1 class="large-12 columns"><%= @userprofile.username %>'s Profile</h1>
+    <h1 class="large-12 columns">Your Profile</h1>
     <br>
     <table>
+       <tr>
+         <td><b>Location:</b></td>
+         <td>
+           <% if @userprofile.username.blank? %>
+              Currently Blank, <%= link_to 'Update?', edit_userprofile_path(@userprofile) %>
+            <% else %>
+              <%= @userprofile.username %>
+            <% end %>
+         </td>
+      </tr>
+
       <tr>
          <td><b>Location:</b></td>
          <td>

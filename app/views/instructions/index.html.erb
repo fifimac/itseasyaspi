@@ -25,12 +25,17 @@
     <h2><%= instruction.title %></h2>
     <p><%= instruction.content.html_safe %></p>
     <div><%= instruction.images %></div>
-    <div><%= link_to 'Show', instruction %></div>
-    <div><%= link_to 'Edit', edit_instruction_path(instruction) %></div>
-    <div><%= link_to 'Destroy', instruction, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-
+    <% if current_user.admin? %>
+        <div><%= link_to 'Show', instruction %></div>
+        <div><%= link_to 'Edit', edit_instruction_path(instruction) %></div>
+        <div>
+          <%= link_to 'Destroy', instruction, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+        <% end %>
 <% end %>
 
 <br />
 
-<%= link_to 'New Instruction', new_instruction_path %>
+<% if current_user.admin? %>
+  <%= link_to 'New Instruction', new_instruction_path %>
+<% end %>

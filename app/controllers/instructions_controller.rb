@@ -1,9 +1,10 @@
 class InstructionsController < ApplicationController
   # GET /instructions
   # GET /instructions.json
-
+  # before_filter :authenticate_user!
+  before_filter :ensure_admin, :only => [:new, :create, :edit, :destroy]
   def index
-    #@instructions = Instruction.all
+    # @instructions = Instruction.all
     @instructions = Instruction.order("step").page(params[:page]).per_page(1)
     respond_to do |format|
       format.html # index.html.erb
