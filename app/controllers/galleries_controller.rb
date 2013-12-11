@@ -1,8 +1,10 @@
 class GalleriesController < ApplicationController
   # GET /galleries
   # GET /galleries.json
+  before_filter :ensure_admin, :only => [:edit, :destroy]
   def index
-    @galleries = Gallery.all
+    # @galleries = Gallery.all
+    @galleries = Gallery.order(params[:sort])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +16,16 @@ class GalleriesController < ApplicationController
   # GET /galleries/1.json
   def show
     @gallery = Gallery.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @gallery }
+    end
+  end
 
+  # GET /galleries/1
+  # GET /galleries/1.json
+  def step
+    @gallery = Gallery.find(params[:step])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @gallery }
@@ -36,7 +47,7 @@ class GalleriesController < ApplicationController
   def new
     @user = User.find(current_user.id)
     @gallery = Gallery.new
-    @gallery.submitted_by = @user.id
+    @gallery.submitted_by = @user.id 
     respond_to do |format|
     format.html # new.html.erb
     format.json { render json: @gallery }
@@ -92,6 +103,12 @@ class GalleriesController < ApplicationController
     end
   end
 
+  def ensure_admin
+      unless current_user && current_user.admin?
+        render :text => "Access Error Message", :status => :unauthorized
+      end
+  end
+
   private
 
     # Use this method to whitelist the permissible parameters. Example:
@@ -101,15 +118,5 @@ class GalleriesController < ApplicationController
       params.require(:gallery).permit(:image, :step, :submitted_by, :user)
     end
 
-    #def myprofile
-    # def userGallery
-    #   gallery = Gallery.find_by_user_id(current_user.id)
-    #   if gallery.nil?
-    #     redirect_to "/gallery/new"
-    #   else
-    #     @user = User.find(current_user.id)
-    #     @gallery = Gallery.find_by_user_id(@user.id)
-    #     redirect_to "/gallery/#{@gallery.id}"
-    #   end
-    # end
+
 end
