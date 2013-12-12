@@ -1,10 +1,11 @@
 class GalleriesController < ApplicationController
   # GET /galleries
   # GET /galleries.json
-  before_filter :ensure_admin, :only => [:edit, :destroy]
+
+before_filter :ensure_admin, :only => [:edit, :destroy]
   def index
-    # @galleries = Gallery.all
-    @galleries = Gallery.order(params[:sort])
+    @galleries = Gallery.all
+    # @galleries = Gallery.order(params[:sort])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -46,8 +47,11 @@ class GalleriesController < ApplicationController
 
   def new
     @user = User.find(current_user.id)
+    @userprofile = Userprofile.find_by_user_id(@user.id)
     @gallery = Gallery.new
-    @gallery.submitted_by = @user.id 
+    #@gallery.submitted_by = @user.id 
+
+    @gallery.submitted_by = @userprofile.username.blank? ?  "anonymous" : @userprofile.username 
     respond_to do |format|
     format.html # new.html.erb
     format.json { render json: @gallery }
@@ -103,6 +107,18 @@ class GalleriesController < ApplicationController
     end
   end
 
+  #   this will ask Active Record to return all records
+  # from the database for a specific 'step'.
+  def step
+    @galleries = Gallery.find_all_by_step(params[:id])
+    @step = params[:id] #params[:id] = Step 3 : xxxx
+    respond_to do |format|
+    format.html # index.html.erb
+    format.json { render json: @items }
+
+    end
+  end
+
   def ensure_admin
       unless current_user && current_user.admin?
         render :text => "Access Error Message", :status => :unauthorized
@@ -110,13 +126,11 @@ class GalleriesController < ApplicationController
   end
 
   private
-
     # Use this method to whitelist the permissible parameters. Example:
     # params.require(:person).permit(:name, :age)
     # Also, you can specialize this method with per-user checking of permissible attributes.
     def gallery_params
-      params.require(:gallery).permit(:image, :step, :submitted_by, :user)
+      params.require(:gallery).permit(:image, :step,  :image_comment, :submitted_by, :user)
     end
-
 
 end

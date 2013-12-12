@@ -1,21 +1,19 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Image:</b>
-	<%= image_tag @gallery.image_url(:thumb_med) %>
-</p>
-
-<p>
-  <b>Submitted by:</b>
-  <%= @gallery.submitted_by %>
-</p>
-
-<p>
-  <b>Step:</b>
-  <%= @gallery.step %>
-</p>
-
-
+<!-- <p id="notice"><%= notice %></p> -->
+<div class="small-8 small-centered columns">
+    <table>
+    	<tr>
+			<td>Image:</td>
+			<td>Description:</td>
+			<td>Submitted by:</td>
+			<td>Step:</td>
+    	</tr>
+    	<tr>
+			<td><%= image_tag @gallery.image_url(:thumb_med) %></td>
+			<td><%= @gallery.image_comment  %></td>
+			<td><%= @gallery.submitted_by  %></td>
+			<td> <%= @gallery.step %></td>
+    	</tr>
+</table>
 
 <%= link_to 'Edit', edit_gallery_path(@gallery) %> |
 <%= link_to 'Back', galleries_path %>

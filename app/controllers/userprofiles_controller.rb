@@ -21,16 +21,7 @@ class UserprofilesController < ApplicationController
     end
   end
 
-  # GET /userprofiles/new
-  # GET /userprofiles/new.json
-  # def new
-  #   @userprofile = Userprofile.new
 
-  #   respond_to do |format|
-  #     format.html # new.html.erb
-  #     format.json { render json: @userprofile }
-  #   end
-  # 
   def new
     @user = User.find(current_user.id)
     @userprofile = Userprofile.new

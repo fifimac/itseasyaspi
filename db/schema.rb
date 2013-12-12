@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131210210939) do
+ActiveRecord::Schema.define(:version => 20131212145501) do
 
   create_table "comments", :force => true do |t|
     t.string   "title"
@@ -22,10 +22,11 @@ ActiveRecord::Schema.define(:version => 20131210210939) do
 
   create_table "galleries", :force => true do |t|
     t.string   "image"
-    t.integer  "submitted_by"
+    t.string   "submitted_by"
     t.integer  "step"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "image_comment"
   end
 
   create_table "instructions", :force => true do |t|
@@ -79,8 +80,8 @@ ActiveRecord::Schema.define(:version => 20131210210939) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -89,16 +90,13 @@ ActiveRecord::Schema.define(:version => 20131210210939) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "username"
     t.string   "location"
     t.string   "bio"
     t.string   "avatar"
-    t.boolean  "admin"
+    t.boolean  "admin",                  :default => false
   end
-
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

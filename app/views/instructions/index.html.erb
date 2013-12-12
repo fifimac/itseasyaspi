@@ -1,10 +1,11 @@
 <div class="row display">
   <div class="small-3 columns left">
-    
+    <h3>
       <% if @instructions.previous_page %>
-        <%= link_to "< Previous", params.merge(page: @instructions.previous_page),:class => "left" %>
-
+        <%= link_to "< Previous", params.merge(page: @instructions.previous_page),:class => "left " %>
       <% end %>
+      &nbsp;
+    </h3>
   </div>
   <div class="small-6 columns">
      Page <%= @instructions.current_page %> of <%= @instructions.total_pages %>
@@ -13,9 +14,12 @@
       </div>
   </div>
   <div class="small-3 columns right">
-       <% if @instructions.next_page %>
-        <%= link_to "Next >", params.merge(page: @instructions.next_page),:class => "right"%>
+    <h3>
+    <% if @instructions.next_page %>
+        <%= link_to "next >", params.merge(page: @instructions.next_page),:class => "right"%>
       <% end %>
+    </h3>
+       
   </div>
 </div>
 
@@ -25,7 +29,7 @@
     <h2><%= instruction.title %></h2>
     <p><%= instruction.content.html_safe %></p>
     <div><%= instruction.images %></div>
-    <% if current_user.admin? %>
+    <% if current_user && current_user.admin? %>
         <div><%= link_to 'Show', instruction %></div>
         <div><%= link_to 'Edit', edit_instruction_path(instruction) %></div>
         <div>
@@ -36,6 +40,6 @@
 
 <br />
 
-<% if current_user.admin? %>
+<% if current_user && current_user.admin? %>
   <%= link_to 'New Instruction', new_instruction_path %>
 <% end %>

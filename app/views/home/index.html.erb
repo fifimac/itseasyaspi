@@ -13,7 +13,7 @@
 
     <div class="row">
       <div class="large-12 hide-for-small">
-        <div id="featured" data-orbit>
+        <div id="feature firstStop" data-orbit>
             <%= image_tag("main_1200x500.jpg", :alt => "completed skirt") %>
             <img src="http://placehold.it/1200x500&text=Slide Image 2" alt="slide image">
             <img src="http://placehold.it/1200x500&text=Slide Image 3" alt="slide image">
@@ -63,7 +63,7 @@
 
 <a class="large button expand" href="#">Load More</a>
 
-<!-- At the bottom of your page but inside of the body tag --> 
+<!-- Tour Buttons --> 
 <ol class="joyride-list" data-joyride> 
   <li data-id="firstStop" data-text="Next" data-options="tip_location:bottom;tip_animation:fade"> 
     <p>Hello and welcome to easy as pi, watch the video to find more...</p> 
@@ -76,8 +76,11 @@
     <h4>Stop #2</h4> 
     <p>Like the look of what you see? Go sign in or go directly to the pattern maker.</p> 
   </li> 
- 
 </ol>
+
+<script>
+$(document).foundation('joyride', 'start');
+</script>
 
 
 

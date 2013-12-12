@@ -1,21 +1,37 @@
-<p id="notice"><%= notice %></p>
+<h1>Images:</h1>
 
-<p>
-  <b>Image:</b>
-	<%= image_tag @gallery.image_url(:thumb_med) %>
-</p>
+<table>
+  <tr>
+    <th>Image</th>
+    <th>Description:</th>
+    <th>Submitted by</th>
+    <th>Step</th>
+     <% if current_user && current_user.admin? %>
+      <th></th>
+      <th></th>
+      <th></th>
+     <% end %>
+  </tr>
 
-<p>
-  <b>Submitted by:</b>
-  <%= @gallery.submitted_by %>
-</p>
+<% @galleries.each do |gallery| %>
+  <tr>
+    <td><%= image_tag gallery.image_url(:thumb_med).to_s %></td>
+    <td><%= gallery.image_comment %></td>
+    <td><%= gallery.submitted_by %></td>
+    <td><%= gallery.step %></td>
 
-<p>
-  <b>Step:</b>
-  <%= @gallery.step %>
-</p>
+    <% if current_user && current_user.admin? %>
+      <td><%= link_to 'Show', gallery %></td>
+      <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
+      <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
 
+  </tr>
 
+<% end %>
+</table>
 
-<%= link_to 'Edit', edit_gallery_path(@gallery) %> |
-<%= link_to 'Back', galleries_path %>
+<br />
+<% if user_signed_in? %>
+<%= link_to 'New Gallery', new_gallery_path %>
+ <% end %>
