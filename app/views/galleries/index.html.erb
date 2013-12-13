@@ -1,35 +1,27 @@
 <h1>Listing galleries</h1>
 
-<table>
-  <tr>
-    <th>Image</th>
-    <th>Description</th>
-    <th><%= link_to "Submitted by", :sort => "submitted_by"%></th>
-    <th><%= link_to "Step", :sort => "step"%></th>
-     <% if current_user && current_user.admin? %>
-      <th></th>
-      <th></th>
-      <th></th>
-     <% end %>
-  </tr>
-
 <% @galleries.each do |gallery| %>
-  <tr>
-    <td><%= image_tag gallery.image_url(:thumb_med).to_s %></td>
-    <td><%= gallery.image_comment %></td>
-    <td><%= gallery.submitted_by %></td>
-    <td><%= gallery.step %></td>
+  <div class="large-3 small-6 columns">
+      <%= image_tag gallery.image_url(:thumb_med).to_s %>
+      <div class = "panel">
+        <p><%= gallery.image_comment %></p>
+        <p><%= gallery.submitted_by %></p>
+        <p><%= gallery.step %></p>
+        <% if current_user && current_user.admin? %>
+          <%= link_to 'Show', gallery %>
+          <%= link_to 'Edit', edit_gallery_path(gallery) %>
+          <%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
+  </div>
 
-    <% if current_user && current_user.admin? %>
-      <td><%= link_to 'Show', gallery %></td>
-      <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
-      <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <% end %>
-  </tr>
 <% end %>
-</table>
 
-<br />
+<hr>
 <% if user_signed_in? %>
-<%= link_to 'New Gallery', new_gallery_path %>
+  <%= link_to 'Add Image of your Progress', new_gallery_path, :class => "button"%>
+ <% else %>
+  <p>Hey, Stranger...</p>
+  <%= link_to 'Register', new_user_registration_path, :class => "button secondary" %> 
+  <%= link_to 'Sign in', new_user_session_path , :class => "button secondary"%>
  <% end %>

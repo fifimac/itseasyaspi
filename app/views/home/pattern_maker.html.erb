@@ -54,14 +54,12 @@
    </div>
     <hr>
     <!-- end form -->
-
       <!-- start canvas -->
-      <h1>Canvas 150cm</h1>
-      <canvas id="Canvas1" width="0" height="0" style="border:1px solid #cccccc;"></canvas><br/>
-      <h1>Canvas 115cm</h1>
-      <canvas id="Canvas2" width="0" height="0" style="border:1px solid #cccccc;"></canvas><br/>
-      <h1>Canvas 90cm</h1>
-      <canvas id="Canvas3" width="0" height="0" style="border:1px solid #cccccc;"></canvas>
+    
+        <canvas id="Canvas1" width="0" height="0" style="border:1px solid #cccccc;"></canvas><br/>
+        <canvas id="Canvas2" width="0" height="0" style="border:1px solid #cccccc;"></canvas><br/>
+        <canvas id="Canvas3" width="0" height="0" style="border:1px solid #cccccc;"></canvas>  
+
     <script>
           $(document).ready(function() {
             function patternMaker(){
@@ -235,25 +233,33 @@
               if (flatpatternHeight > 150 || flatpatternHeight == "" ){
                 var displaymsg = "Sorry you will have to change your measurements";
                 var errorClass = "warning";
+                boltsize = null;
+
+                
               }
               else if(flatpatternHeight < 150){
                 var displaymsg = "Great you can make your skirt in 1 bolt size: bolt size 150cm";
                 console.log("draw a 150")
-                drawCanvas("Canvas1",150);
+                boltsize = 150;
+                drawCanvas("Canvas1",boltsize);
 
               if (flatpatternHeight < 115){
                   var displaymsg = "Great you can make your skirt in 2 bolt size: bolt size 115cm and 150cm. You decide!";
-                  console.log("draw a 115")  
-                  drawCanvas("Canvas2",115);
+                  console.log("draw a 115") 
+                  boltsize = 115;
+                  drawCanvas("Canvas2",boltsize);
+
                   if (flatpatternHeight < 90){
                     var displaymsg = "Great you can make your skirt in 3 bolt size: bolt size 90cm, 115cm and 150cm. You decide!";
                     console.log("draw a 90")
-                    drawCanvas("Canvas3",90);
+                    boltsize = 90;
+                    drawCanvas("Canvas3",boltsize);
                   }  
                 }
               }
               //Display message to the user
-              displaymsgDIV = "<div id=\"displaymsg\" class=\"alert-box " + errorClass+ "\">" + displaymsg + "</div>"; 
+              displaymsgDIV = "<div id=\"displaymsg\" class=\"alert-box text-center small-6 columns " + errorClass+ "\"><h3>" + displaymsg + "</h3></div>"; 
+
               //check if displaymsg already exists
               if ($(document).find("#displaymsg").length == 0) 
               { 
@@ -264,16 +270,60 @@
                 $( "#displaymsg" ).replaceWith(displaymsgDIV);
               }
 
-             
+              if(flatpatternHeight < 150){
+                requiredFabric = "<hr><div class=\"panel callout text-center\">\
+                              <h4>Bolt width"+ boltsize +"cm</h4>\
+                              <h5>Length of fabric required:</h5>\
+                              <p>"+flatpatternWidth+"</p>\
+                              </div>";
+
+                infotable = "<table class=\"small-4 columns right\">\
+                              <tr>\
+                                <th colspan=\"2\">Take Note, Important Numbers:</th>\
+                              </tr>\
+                              <th>\
+                                <td></td>\
+                              </th>\
+                              <tr>\
+                                <td>Waistband Width:</td>\
+                                <td>" + waistband_width + choosenUnit  + "</td>\
+                              </tr>\
+                              <tr>\
+                                <td>Waistband Lenght</td>\
+                                <td>" + waistband_lenght + choosenUnit  + "</td>\
+                              </tr>\
+                              <tr>\
+                                <td>Inner Radius</td>\
+                                <td> " + r1 + choosenUnit  + "</td>\
+                              </tr>\
+                                <td>Outer Radius</td>\
+                                <td>" + r2 + choosenUnit  + "</td>\
+                              </tr>\
+                          </table>";
+                // precanvas notices
+                $( "#Canvas1" ).before(infotable); 
+                $( "#Canvas1" ).before(requiredFabric); 
+                if(flatpatternHeight < 115){
+                   $( "#Canvas2" ).before(requiredFabric); 
+                }
+                if(flatpatternHeight < 90){
+                   $( "#Canvas3" ).before(requiredFabric); 
+                }   
+              }
+            
             }
           $("#dress").on("submit", function(e){
             e.preventDefault();
             $(this).find("button").addClass("triggered").css("background-color", "red");
+            // $(document).find("#canvas150").addClass("show");
             patternMaker();
           });
-          $("#dress input").on("change", function(e) {
-            $("#dress button").removeClass("triggered").css("background-color", "green");
-          });
+
+
+
+          // $("#dress input").on("change", function(e) {
+          //   $("#dress button").removeClass("triggered").css("background-color", "green");
+          // });
       });
     </script>
   </section>

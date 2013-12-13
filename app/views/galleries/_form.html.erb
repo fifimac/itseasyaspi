@@ -1,33 +1,9 @@
-<%= form_for(@gallery , :html => {:multipart => true} ) do |f| %>
-  <% if @gallery.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@gallery.errors.count, "error") %> prohibited this gallery from being saved:</h2>
-
-      <ul>
-      <% @gallery.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= simple_form_for(@gallery , :html => {:multipart => true} ) do |f| %>
+  <%= f.error_notification %>
   <%= f.hidden_field :submitted_by %>
-
-  <div class="field">
-    <%= f.label :step %><br />
-    <%= f.number_field :step %>
-  </div>
-
-  <div class="field">
-    <p><%= f.label :image %><br /></p>
-    <%= f.file_field :image %>
-  </div>
-
-  <div class="field">
-    <p><%= f.label :image_comment %><br /></p>
-    <%= f.text_field :image_comment %>
-  </div>
-  <div class="actions">
-    <%= f.submit :submit, :class => "button" %>
-  </div>
+  <%= f.input :step %>
+  <%= f.input :image %>
+  <%= f.input :image_comment, label: "Image description:"  %>
+  <%= f.button :submit, label: "Submit"  %>
 <% end %>
+
