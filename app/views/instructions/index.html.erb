@@ -25,7 +25,6 @@
 </div>
 <!-- end info bar -->
 <% @instructions.each do |instruction| %>
-    <h2><%= instruction.step %></h2>
     <h2><%= instruction.title %></h2>
     <p><%= instruction.content.html_safe %></p>
     <div><%= instruction.images %></div>

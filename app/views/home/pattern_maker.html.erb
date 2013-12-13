@@ -235,7 +235,7 @@
                 var errorClass = "warning";
                 boltsize = null;
 
-                
+
               }
               else if(flatpatternHeight < 150){
                 var displaymsg = "Great you can make your skirt in 1 bolt size: bolt size 150cm";
@@ -270,11 +270,12 @@
                 $( "#displaymsg" ).replaceWith(displaymsgDIV);
               }
 
+              flatpatternWidth = Math.round(flatpatternWidth);
               if(flatpatternHeight < 150){
                 requiredFabric = "<hr><div class=\"panel callout text-center\">\
                               <h4>Bolt width"+ boltsize +"cm</h4>\
                               <h5>Length of fabric required:</h5>\
-                              <p>"+flatpatternWidth+"</p>\
+                              <p>"+flatpatternWidth+ choosenUnit +"</p>\
                               </div>";
 
                 infotable = "<table class=\"small-4 columns right\">\
