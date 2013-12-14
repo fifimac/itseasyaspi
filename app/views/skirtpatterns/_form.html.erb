@@ -55,44 +55,10 @@
     <hr>
     <!-- end form -->
       <!-- start canvas -->
-    <div class="hidden">
-      <canvas id="Canvas1" width="0" height="0" style="border:1px solid #cccccc;"></canvas><br/>
-      <canvas id="Canvas2" width="0" height="0" style="border:1px solid #cccccc;"></canvas><br/>
-      <canvas id="Canvas3" width="0" height="0" style="border:1px solid #cccccc;"></canvas>  
-
-      <hr>
-      <div class="panel callout text-center">\
-        <h4>Bolt width"+ boltsize +"cm</h4>\
-        <h5>Length of fabric required:</h5>\
-        <p>"+flatpatternWidth+ choosenUnit +"</p>\
-      </div>
-    <div>
-          <%= simple_form_for(@skirtpattern) do |f| %>
-            <%= f.error_notification %>
-
-            <div class="form-inputs">
-
-              <%= f.hidden_field :user_id %>
-              <%= f.hidden_field :makepattern %>
-              <%= f.hidden_field :unit %>
-              <%= f.hidden_field :skirt_type %>
-              <%= f.hidden_field :waist %>
-              <%= f.hidden_field :length %>
-              <%= f.hidden_field :canvas1 %>
-              <%= f.hidden_field :canvas2 %>
-              <%= f.hidden_field :canvas3 %>
-              <%= f.hidden_field :inner_radius %>
-              <%= f.hidden_field :outer_radius %>
-              <%= f.hidden_field :waistbandLgth %>
-              <%= f.hidden_field :waistbandWdth %>
-            </div>
-
-            <div class="form-actions">
-              <%= f.button :submit %>
-            </div>
-          <% end %>
-        </div>
-      </div>
+    
+        <canvas id="Canvas1" width="0" height="0" style="border:1px solid #cccccc;"></canvas><br/>
+        <canvas id="Canvas2" width="0" height="0" style="border:1px solid #cccccc;"></canvas><br/>
+        <canvas id="Canvas3" width="0" height="0" style="border:1px solid #cccccc;"></canvas>  
 
     <script>
           $(document).ready(function() {
@@ -306,19 +272,6 @@
 
               flatpatternWidth = Math.round(flatpatternWidth);
               if(flatpatternHeight < 150){
-                $("#skirtpattern_makepattern").val(1);
-                $("#skirtpattern_unit").val(choosenUnit);
-                $("#skirtpattern_skirt_type").val(skirt_type);
-                $("#skirtpattern_waist").val(waist);
-                $("#skirtpattern_length").val(length);
-                $("#skirtpattern_canvas1").val(flatpatternWidth);
-                $("#skirtpattern_canvas2").val(flatpatternWidth);
-                $("#skirtpattern_canvas3").val(flatpatternWidth);
-                $("#skirtpattern_inner_radius").val(r1);
-                $("#skirtpattern_outer_radius").val(r2);
-                $("#skirtpattern_waistbandLgth").val(waistband_lenght);
-                $("#skirtpattern_waistbandWdth").val(waistband_width);
-
                 requiredFabric = "<hr><div class=\"panel callout text-center\">\
                               <h4>Bolt width"+ boltsize +"cm</h4>\
                               <h5>Length of fabric required:</h5>\
@@ -349,8 +302,8 @@
                               </tr>\
                           </table>";
                 // precanvas notices
-                $("#Canvas1").before(infotable); 
-                $("#Canvas1").before(requiredFabric); 
+                $( "#Canvas1" ).before(infotable); 
+                $( "#Canvas1" ).before(requiredFabric); 
                 if(flatpatternHeight < 115){
                    $( "#Canvas2" ).before(requiredFabric); 
                 }
@@ -375,4 +328,30 @@
       });
     </script>
   </section>
+</div>
+<div class="small-8 small-centered columns">
+  <%= simple_form_for(@skirtpattern) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+
+      <%= f.hidden_field :user_id %>
+      <%= f.input :makepattern %>
+      <%= f.input :unit %>
+      <%= f.input :skirt_type %>
+      <%= f.input :waist %>
+      <%= f.input :length %>
+      <%= f.input :canvas1 %>
+      <%= f.input :canvas2 %>
+      <%= f.input :canvas3 %>
+      <%= f.input :inner_radius %>
+      <%= f.input :outer_radius %>
+      <%= f.input :waistbandLgth %>
+      <%= f.input :waistbandWdth %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
 </div>

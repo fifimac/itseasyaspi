@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
    # validates_presence_of :attribute, :on => :create , :message => "can't be black"
   has_one :userprofiles
   has_many :galleries
+  has_one :skirtpattern
 end
 
 

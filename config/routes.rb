@@ -1,4 +1,7 @@
 Itseasyaspi::Application.routes.draw do
+  resources :skirtpatterns
+
+
   resources :galleries
 
 

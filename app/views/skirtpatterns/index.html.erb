@@ -1,0 +1,47 @@
+<h1>Listing skirtpatterns</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Makepattern</th>
+    <th>Unit</th>
+    <th>Skirt type</th>
+    <th>Waist</th>
+    <th>Length</th>
+    <th>Canvas1</th>
+    <th>Canvas2</th>
+    <th>Canvas3</th>
+    <th>Inner radius</th>
+    <th>Outer radius</th>
+    <th>Waistbandlgth</th>
+    <th>Waistbandwdth</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @skirtpatterns.each do |skirtpattern| %>
+  <tr>
+    <td><%= skirtpattern.user_id %></td>
+    <td><%= skirtpattern.makepattern %></td>
+    <td><%= skirtpattern.unit %></td>
+    <td><%= skirtpattern.skirt_type %></td>
+    <td><%= skirtpattern.waist %></td>
+    <td><%= skirtpattern.length %></td>
+    <td><%= skirtpattern.canvas1 %></td>
+    <td><%= skirtpattern.canvas2 %></td>
+    <td><%= skirtpattern.canvas3 %></td>
+    <td><%= skirtpattern.inner_radius %></td>
+    <td><%= skirtpattern.outer_radius %></td>
+    <td><%= skirtpattern.waistbandLgth %></td>
+    <td><%= skirtpattern.waistbandWdth %></td>
+    <td><%= link_to 'Show', skirtpattern %></td>
+    <td><%= link_to 'Edit', edit_skirtpattern_path(skirtpattern) %></td>
+    <td><%= link_to 'Destroy', skirtpattern, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Skirtpattern', new_skirtpattern_path %>

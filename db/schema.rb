@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131212145501) do
+ActiveRecord::Schema.define(:version => 20131213151312) do
 
   create_table "comments", :force => true do |t|
     t.string   "title"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20131212145501) do
   create_table "galleries", :force => true do |t|
     t.string   "image"
     t.string   "submitted_by"
-    t.integer  "step"
+    t.string   "step"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.string   "image_comment"
@@ -67,6 +67,24 @@ ActiveRecord::Schema.define(:version => 20131212145501) do
   end
 
   add_index "replies", ["comment_id"], :name => "index_replies_on_comment_id"
+
+  create_table "skirtpatterns", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "makepattern"
+    t.string   "unit"
+    t.string   "skirt_type"
+    t.integer  "waist"
+    t.integer  "length"
+    t.integer  "canvas1"
+    t.integer  "canvas2"
+    t.integer  "canvas3"
+    t.integer  "inner_radius"
+    t.integer  "outer_radius"
+    t.integer  "waistbandLgth"
+    t.integer  "waistbandWdth"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "userprofiles", :force => true do |t|
     t.string   "username"

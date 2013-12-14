@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  makepattern: MyString
+  unit: MyString
+  skirt_type: MyString
+  waist: 1
+  length: 1
+  canvas1: 1
+  canvas2: 1
+  canvas3: 1
+  inner_radius: 1
+  outer_radius: 1
+  waistbandLgth: 1
+  waistbandWdth: 1
+
+two:
+  user_id: 1
+  makepattern: MyString
+  unit: MyString
+  skirt_type: MyString
+  waist: 1
+  length: 1
+  canvas1: 1
+  canvas2: 1
+  canvas3: 1
+  inner_radius: 1
+  outer_radius: 1
+  waistbandLgth: 1
+  waistbandWdth: 1

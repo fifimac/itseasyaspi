@@ -1,12 +1,13 @@
-<h1>Listing galleries</h1>
-
+<h2>All User submitted images</h2>
+<hr>
 <% @galleries.each do |gallery| %>
   <div class="large-3 small-6 columns">
       <%= image_tag gallery.image_url(:thumb_med).to_s %>
       <div id="gallery" class = "panel">
-        <p><%= gallery.image_comment %></p>
+        <h5><%= gallery.image_comment %></h5>
         <p>Submitted by: <i><%= gallery.submitted_by %></i> </p>
         <p>Step: <%= gallery.step %></p>
+        <p>Uploaded on: <%= gallery.created_at.strftime("%d %b %Y %H:%M") %></p>
         <% if current_user && current_user.admin? %>
           <%= link_to 'Show', gallery %>
           <%= link_to 'Edit', edit_gallery_path(gallery) %>
