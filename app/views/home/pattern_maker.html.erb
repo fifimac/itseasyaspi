@@ -61,10 +61,10 @@
       <canvas id="Canvas3" width="0" height="0" style="border:1px solid #cccccc;"></canvas>  
 
       <hr>
-      <div class="panel callout text-center">\
-        <h4>Bolt width"+ boltsize +"cm</h4>\
-        <h5>Length of fabric required:</h5>\
-        <p>"+flatpatternWidth+ choosenUnit +"</p>\
+      <div class="panel callout text-center hide">
+        <h4></h4>
+        <h5></h5>
+        <p> </p>
       </div>
     <div>
           <%= simple_form_for(@skirtpattern) do |f| %>
@@ -88,7 +88,7 @@
             </div>
 
             <div class="form-actions">
-              <%= f.button :submit %>
+              <%= f.button :submit, 'Save Pattern'  %>
             </div>
           <% end %>
         </div>
