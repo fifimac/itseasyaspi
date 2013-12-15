@@ -3,17 +3,20 @@
 <% @galleries.each do |gallery| %>
   <div class="large-3 small-6 columns">
       <%= image_tag gallery.image_url(:thumb_med).to_s %>
-      <div id="gallery" class = "panel">
-        <h5><%= gallery.image_comment %></h5>
-        <p>Submitted by: <i><%= gallery.submitted_by %></i> </p>
-        <p>Step: <%= gallery.step %></p>
-        <p>Uploaded on: <%= gallery.created_at.strftime("%d %b %Y %H:%M") %></p>
-        <% if current_user && current_user.admin? %>
-          <%= link_to 'Show', gallery %>
-          <%= link_to 'Edit', edit_gallery_path(gallery) %>
-          <%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
-      </div>
+  
+        <div id="gallery" class = "panel">
+          <h5><%= gallery.image_comment %></h5>
+          <p>Submitted by: <i><%= gallery.submitted_by %></i> </p>
+          <p>Step: <%= gallery.step %></p>
+          <p>Uploaded on: <%= gallery.created_at.strftime("%d %b %Y %H:%M") %></p>
+          <%= link_to 'See More', gallery , :class=>"button secondary"%>
+          <% if current_user && current_user.admin? %>
+            
+            <%= link_to 'Edit', edit_gallery_path(gallery) %>
+            <%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </div>
+    
   </div>
 
 <% end %>
