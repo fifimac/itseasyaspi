@@ -55,3 +55,17 @@
 min-height: 35px;
 
 }
+
+.carousel-caption {
+position: absolute;
+right: 0;
+top: 0;
+left: 0;
+padding: 0px 0px;
+text-align: center;
+background-color: #ffffff;
+opacity: 0.9;
+margin: 0 15%;
+top: 7%;
+border-radius: 4px;
+}

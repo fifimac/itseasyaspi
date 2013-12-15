@@ -9,3 +9,6 @@
 60,30,full
 50,30,full
 70,30,full
+70,40,full
+70,40,full
+50,30,full
