@@ -9,9 +9,8 @@
           <p>Submitted by: <i><%= gallery.submitted_by %></i> </p>
           <p>Step: <%= gallery.step %></p>
           <p>Uploaded on: <%= gallery.created_at.strftime("%d %b %Y %H:%M") %></p>
-          <%= link_to 'See More', gallery , :class=>"button secondary"%>
+          <%= link_to 'See More', gallery , :class=>"button secondary text-center"%>
           <% if current_user && current_user.admin? %>
-            
             <%= link_to 'Edit', edit_gallery_path(gallery) %>
             <%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
