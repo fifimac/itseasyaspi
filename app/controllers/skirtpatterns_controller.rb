@@ -1,5 +1,5 @@
 class SkirtpatternsController < ApplicationController
- require "Usersizes"
+ # require "Usersizes"
   # GET /skirtpatterns
   # GET /skirtpatterns.json
   def index
@@ -49,15 +49,13 @@ class SkirtpatternsController < ApplicationController
     #@skirtpattern = Skirtpattern.new(params[:skirtpattern_params])
    # require "debugger" ; debugger
     @skirtpattern = Skirtpattern.new(skirtpattern_params)
-    
-    @p1 = Usersizes.addSizing(params[:skirtpattern][:waist],params[:skirtpattern][:length],params[:skirtpattern][:skirt_type])
-    # @p1 = Usersizes.new(file_name)
-    # # Using params[:skirtpattern][:firstname] to access the form info entered by the user
-    # @p1.addSizing(params[:skirtpattern][:waist],params[:skirtpattern][:length],params[:skirtpattern][:skirt_type])
 
+    #this Usersizes.addSizing() calls the gem usersizes
+    @p1 = Usersizes.addSizing(params[:skirtpattern][:waist],params[:skirtpattern][:length],params[:skirtpattern][:skirt_type])
+  
     respond_to do |format|
       if @skirtpattern.save
-        format.html { redirect_to @skirtpattern, notice: 'Skirtpattern was successfully created.' }
+        format.html { redirect_to @skirtpattern, notice: 'Skirtpattern was successfully saved' }
         format.json { render json: @skirtpattern, status: :created, location: @skirtpattern }
       else
         format.html { render action: "new" }
