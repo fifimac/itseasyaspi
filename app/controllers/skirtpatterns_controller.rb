@@ -1,5 +1,5 @@
 class SkirtpatternsController < ApplicationController
-  require 'UserSizes'
+ require "Usersizes"
   # GET /skirtpatterns
   # GET /skirtpatterns.json
   def index
@@ -34,8 +34,6 @@ class SkirtpatternsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @skirtpattern }
-
-
     end
   end
 
@@ -49,8 +47,11 @@ class SkirtpatternsController < ApplicationController
   # POST /skirtpatterns.json
   def create
     #@skirtpattern = Skirtpattern.new(params[:skirtpattern_params])
+   # require "debugger" ; debugger
     @skirtpattern = Skirtpattern.new(skirtpattern_params)
-    # @p1 = UserSizes.new("UserSizes.txt")
+    
+    @p1 = Usersizes.addSizing(params[:skirtpattern][:waist],params[:skirtpattern][:length],params[:skirtpattern][:skirt_type])
+    # @p1 = Usersizes.new(file_name)
     # # Using params[:skirtpattern][:firstname] to access the form info entered by the user
     # @p1.addSizing(params[:skirtpattern][:waist],params[:skirtpattern][:length],params[:skirtpattern][:skirt_type])
 
@@ -98,6 +99,10 @@ class SkirtpatternsController < ApplicationController
     # Use this method to whitelist the permissible parameters. Example:
     # params.require(:person).permit(:name, :age)
     # Also, you can specialize this method with per-user checking of permissible attributes.
+    def file_name
+
+    end
+   
     def skirtpattern_params
       params.require(:skirtpattern).permit(:canvas1, :canvas2, :canvas3, :inner_radius, :length, :makepattern, :outer_radius, :skirt_type, :unit, :user_id, :waist, :waistbandLgth, :waistbandWdth)
     end

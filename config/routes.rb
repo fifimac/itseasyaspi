@@ -32,6 +32,9 @@ Itseasyaspi::Application.routes.draw do
   match '/myprofile' => 'userprofiles#myprofile' 
   match '/step/:id' => 'galleries#step' 
 
+  # match '/check', :controller=>'primes', :action=>'checkprime'
+  match '/check', :controller=>'skirtpatterns', :action=>'Usersizes'
+
  # match '/users/show' => 'devise/registrations#show'
   
   # match '/users/logout' => 'user#logout'
