@@ -24,14 +24,14 @@
             <label class="inline">Skirt type:</label>
           </div>
           <div class="large-10 columns">
-              <select  id="skirt_type" name="skirt_type" required="required" class="medium">
+              <select id="skirt_type" name="skirt_type" required="required" class="medium">
                 <option value="full">Full Circle</option>
                 <option value="half">Half Circle</option>
               </select>
           </div>
         </div>
         <div class="row collapse">
-           <!--  Waist   -->
+           <!-- Waist -->
           <div class="large-2 columns">
              <label for="waist">Waist: </label>
           </div>
@@ -40,7 +40,7 @@
           </div>
         </div>
         <div class="row collapse">
-          <!--  Length   -->
+          <!-- Length -->
           <div class="large-2 columns">
               <label for="length">Length: </label>
           </div>
@@ -58,7 +58,7 @@
     <div class="hidden">
       <canvas id="Canvas1" width="0" height="0" style="border:1px solid #cccccc;"></canvas><br/>
       <canvas id="Canvas2" width="0" height="0" style="border:1px solid #cccccc;"></canvas><br/>
-      <canvas id="Canvas3" width="0" height="0" style="border:1px solid #cccccc;"></canvas>  
+      <canvas id="Canvas3" width="0" height="0" style="border:1px solid #cccccc;"></canvas>
 
       <hr>
       <div class="panel callout text-center hide">
@@ -88,7 +88,7 @@
             </div>
 
             <div class="form-actions">
-              <%= f.button :submit, 'Save Pattern'  %>
+              <%= f.button :submit, 'Save Pattern' %>
             </div>
           <% end %>
         </div>
@@ -98,51 +98,51 @@
           $(document).ready(function() {
             function patternMaker(){
               // user input
-              var units = $("#units").val();      //either cm or inchs
-              var skirt_type = $("#skirt_type").val();     //either full circle or half circle  
+              var units = $("#units").val(); //either cm or inchs
+              var skirt_type = $("#skirt_type").val(); //either full circle or half circle
               var waist = parseInt($("#waist").val());
               var length = parseInt($("#length").val());
               // constant variables
-              var bias_stretch= 5;      // 5cm stretch went material is cut on the diagonal. 
+              var bias_stretch= 5; // 5cm stretch went material is cut on the diagonal.
               var seam_allowance = 1.5; //1.5cm seam allowance
-              var hem_allowance = 5     //5cm hem allowance
-              var allowance =  seam_allowance + hem_allowance ; 
+              var hem_allowance = 5 //5cm hem allowance
+              var allowance = seam_allowance + hem_allowance ;
               var cmToIn = 0.393;
               var waistband_width = 10 + (seam_allowance*2) ;
               var clearance = 4 ;
-              //derived from user variables 
+              //derived from user variables
               if (units=='Centimeters'){
-                choosenUnit = 'cm';    
+                choosenUnit = 'cm';
               }
               else if (units=='Inches'){
-                choosenUnit = 'in'; 
-                bias_stretch =  bias_stretch * cmToIn;
-                allowance = allowance * cmToIn ; 
+                choosenUnit = 'in';
+                bias_stretch = bias_stretch * cmToIn;
+                allowance = allowance * cmToIn ;
                 waistband_width = waistband_width *cmToIn;
               }
-              var adjust_waist= waist - bias_stretch;   // accounts for 'bias-stretch' 
-              var lenghtAllow = length + allowance;     //skirt length including allowance
+              var adjust_waist= waist - bias_stretch; // accounts for 'bias-stretch'
+              var lenghtAllow = length + allowance; //skirt length including allowance
               var waistband_lenght = waist + (allowance*2);
               // calculates radius based on full or half cirlce skirt selection
               if (skirt_type=='full'){
                 circle_type = 2 * Math.PI;
-                waistRadius = (adjust_waist/circle_type);  // r = c/(pi * 2); 
-                totalRadius= lenghtAllow + waistRadius ; 
-                flatpatternHeight =  totalRadius * 2;
-                flatpatternWidth =  totalRadius * 2;  
+                waistRadius = (adjust_waist/circle_type); // r = c/(pi * 2);
+                totalRadius= lenghtAllow + waistRadius ;
+                flatpatternHeight = totalRadius * 2;
+                flatpatternWidth = totalRadius * 2;
               }
               else if (skirt_type=='half'){
                 circle_type = Math.PI;
                 waistRadius = (adjust_waist/circle_type);
-                totalRadius= lenghtAllow + waistRadius ; 
-                flatpatternHeight =  totalRadius;
-                flatpatternWidth =  totalRadius * 2;  
+                totalRadius= lenghtAllow + waistRadius ;
+                flatpatternHeight = totalRadius;
+                flatpatternWidth = totalRadius * 2;
               }
-              flatpatternWidth = flatpatternWidth + clearance  ;
+              flatpatternWidth = flatpatternWidth + clearance ;
               flatpatternHeight = flatpatternHeight + clearance ;
               // for debugging
               // console.log(units);
-              // console.log(skirt_type);  
+              // console.log(skirt_type);
               // console.log(flatpatternHeight);
               // console.log(waist);
               // console.log(length);
@@ -153,13 +153,13 @@
                 var context = canvas.getContext('2d');
                 var scale = 4;
                 var extrawidth = 0;
-                canvas.width =  flatpatternWidth * scale;
+                canvas.width = flatpatternWidth * scale;
                 canvas.height = fabricHeight * scale;
                 var centerX = (flatpatternWidth/2) ;
                 var centerY = (totalRadius) + (clearance /2);
 
-                if ((flatpatternHeight + waistband_width) <  fabricHeight){
-                  //put waistband horizontially 
+                if ((flatpatternHeight + waistband_width) < fabricHeight){
+                  //put waistband horizontially
                   a = 0 + clearance;
                   b = flatpatternHeight - (clearance /2);
                   c = waistband_lenght;
@@ -180,22 +180,22 @@
                   txtX = flatpatternWidth + (waistband_width /2);
                   txtY = (clearance + waistband_lenght)/2;
                   txt= waistband_width + " x " + waistband_lenght;
-                  canvas.width =  (flatpatternWidth + waistband_width + clearance ) * scale;
+                  canvas.width = (flatpatternWidth + waistband_width + clearance ) * scale;
                   console.log('ver');
                   // context.rect(flatpatternWidth , 0, waistband_width , waistband_lenght);
                   //console.log(canvas.width);
                   //console.log(flatpatternWidth,waistband_width , waistband_lenght);
                 }
-                // waist band - recetangle           
+                // waist band - recetangle
                 context.beginPath();
                 context.scale(scale,scale);
                 context.rect(a , b, c , d);
                 context.stroke();
                 context.closePath();
-                // skirt outer cut out - circle 
+                // skirt outer cut out - circle
                 context.beginPath();
                 context.arc(centerX, centerY, totalRadius, 0, circle_type, true)
-                // skirt inner cut out - circle 
+                // skirt inner cut out - circle
                 context.arc(centerX, centerY, waistRadius, 0, circle_type, true);
                 // inner radius
                 context.lineTo(centerX, centerY);
@@ -255,15 +255,15 @@
               context.textBaseline = 'hanging';
               context.fillText( text, x, y);
              }
-              r1 = Math.round(waistRadius);  
+              r1 = Math.round(waistRadius);
               r2 = Math.round(lenghtAllow);
               text( r1+ choosenUnit , centerX, centerY);
               text( r2+ choosenUnit , centerX+ waistRadius + (lenghtAllow/2), centerY);
-              text( txt , txtX, txtY);     
+              text( txt , txtX, txtY);
             }
             // if statement will check, if the inputs are appropriate
-            console.log("another check clear  flatpatternHeight = " + flatpatternHeight );
-            console.log("another check clear  flatpatternHeight + waistband_width = " + (flatpatternHeight + waistband_width) );
+            console.log("another check clear flatpatternHeight = " + flatpatternHeight );
+            console.log("another check clear flatpatternHeight + waistband_width = " + (flatpatternHeight + waistband_width) );
               if (flatpatternHeight > 150 || flatpatternHeight == "" ){
                 var displaymsg = "Sorry you will have to change your measurements";
                 var errorClass = "warning";
@@ -279,7 +279,7 @@
 
               if (flatpatternHeight < 115){
                   var displaymsg = "Great you can make your skirt in 2 bolt size: bolt size 115cm and 150cm. You decide!";
-                  console.log("draw a 115") 
+                  console.log("draw a 115")
                   boltsize = 115;
                   drawCanvas("Canvas2",boltsize);
 
@@ -288,17 +288,17 @@
                     console.log("draw a 90")
                     boltsize = 90;
                     drawCanvas("Canvas3",boltsize);
-                  }  
+                  }
                 }
               }
               //Display message to the user
-              displaymsgDIV = "<div id=\"displaymsg\" class=\"alert-box text-center small-6 columns " + errorClass+ "\"><h3>" + displaymsg + "</h3></div>"; 
+              displaymsgDIV = "<div id=\"displaymsg\" class=\"alert-box text-center small-6 columns " + errorClass+ "\"><h3>" + displaymsg + "</h3></div>";
 
               //check if displaymsg already exists
-              if ($(document).find("#displaymsg").length == 0) 
-              { 
-                $( "#Canvas1" ).before(displaymsgDIV);   
-              } 
+              if ($(document).find("#displaymsg").length == 0)
+              {
+                $( "#Canvas1" ).before(displaymsgDIV);
+              }
               else{
                 console.log("displaymsg is already here");
                 $( "#displaymsg" ).replaceWith(displaymsgDIV);
@@ -320,43 +320,43 @@
                 $("#skirtpattern_waistbandWdth").val(waistband_width);
 
                 requiredFabric = "<hr><div class=\"panel callout text-center\">\
-                              <h4>Bolt width"+ boltsize +"cm</h4>\
-                              <h5>Length of fabric required:</h5>\
-                              <p>"+flatpatternWidth+ choosenUnit +"</p>\
-                              </div>";
+                                        <h4>Bolt width"+ boltsize +"cm</h4>\
+                                        <h5>Length of fabric required:</h5>\
+                                        <p>"+flatpatternWidth+ choosenUnit +"</p>\
+                                        </div>";
 
-                infotable = "<table class=\"small-4 columns right\">\
-                              <tr>\
-                                <th colspan=\"2\">Take Note, Important Numbers:</th>\
-                              </tr>\
+              infotable = "<table class=\"small-4 columns right\">\
+                            <tr>\
+                              <th colspan=\"2\">Take Note, Important Numbers:</th>\
+                            </tr>\
                               <th>\
-                                <td></td>\
-                              </th>\
-                              <tr>\
-                                <td>Waistband Width:</td>\
-                                <td>" + waistband_width + choosenUnit  + "</td>\
-                              </tr>\
-                              <tr>\
-                                <td>Waistband Lenght</td>\
-                                <td>" + waistband_lenght + choosenUnit  + "</td>\
-                              </tr>\
-                              <tr>\
-                                <td>Inner Radius</td>\
-                                <td> " + r1 + choosenUnit  + "</td>\
-                              </tr>\
-                                <td>Outer Radius</td>\
-                                <td>" + r2 + choosenUnit  + "</td>\
-                              </tr>\
+                            <td></td>\
+                            </th>\
+                            <tr>\
+                            <td>Waistband Width:</td>\
+                            <td>" + waistband_width + choosenUnit + "</td>\
+                            </tr>\
+                            <tr>\
+                            <td>Waistband Lenght</td>\
+                            <td>" + waistband_lenght + choosenUnit + "</td>\
+                            </tr>\
+                            <tr>\
+                            <td>Inner Radius</td>\
+                            <td> " + r1 + choosenUnit + "</td>\
+                            </tr>\
+                            <td>Outer Radius</td>\
+                            <td>" + r2 + choosenUnit + "</td>\
+                            </tr>\
                           </table>";
                 // precanvas notices
-                $("#Canvas1").before(infotable); 
-                $("#Canvas1").before(requiredFabric); 
+                $("#Canvas1").before(infotable);
+                $("#Canvas1").before(requiredFabric);
                 if(flatpatternHeight < 115){
-                   $( "#Canvas2" ).before(requiredFabric); 
+                   $( "#Canvas2" ).before(requiredFabric);
                 }
                 if(flatpatternHeight < 90){
-                   $( "#Canvas3" ).before(requiredFabric); 
-                }   
+                   $( "#Canvas3" ).before(requiredFabric);
+                }
               }
             
             }
@@ -370,7 +370,7 @@
 
 
           // $("#dress input").on("change", function(e) {
-          //   $("#dress button").removeClass("triggered").css("background-color", "green");
+          // $("#dress button").removeClass("triggered").css("background-color", "green");
           // });
       });
     </script>

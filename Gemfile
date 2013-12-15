@@ -29,6 +29,7 @@ gem "carrierwave"
 gem 'pdfkit' # for pdf creation of user generated pattern
 gem 'foundation-rails'
 gem 'simple_form'
+gem 'usersizes' , '>=0.0.1'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

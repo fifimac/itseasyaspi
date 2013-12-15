@@ -1,5 +1,5 @@
 class SkirtpatternsController < ApplicationController
-  require 'Sizes'
+  require 'UserSizes'
   # GET /skirtpatterns
   # GET /skirtpatterns.json
   def index
@@ -11,15 +11,6 @@ class SkirtpatternsController < ApplicationController
       format.csv { render text: @skirtpatterns.to_csv }
     end
   end
-
-# def index
-#   @products = Product.order(:id)
-#   respond_to do |format|
-#     format.html
-#     format.csv { send_data @products.to_csv }
-#     format.xls # { send_data @products.to_csv(col_sep: "\t") }
-#   end
-# end
 
   # GET /skirtpatterns/1
   # GET /skirtpatterns/1.json
@@ -59,9 +50,9 @@ class SkirtpatternsController < ApplicationController
   def create
     #@skirtpattern = Skirtpattern.new(params[:skirtpattern_params])
     @skirtpattern = Skirtpattern.new(skirtpattern_params)
-    @p1 = ::Sizes.new("UserSizes.txt")
-    # Using params[:skirtpattern][:firstname] to access the form info entered by the user
-    @p1.addSizing(params[:skirtpattern][:waist],params[:skirtpattern][:length],params[:skirtpattern][:skirt_type])
+    # @p1 = UserSizes.new("UserSizes.txt")
+    # # Using params[:skirtpattern][:firstname] to access the form info entered by the user
+    # @p1.addSizing(params[:skirtpattern][:waist],params[:skirtpattern][:length],params[:skirtpattern][:skirt_type])
 
     respond_to do |format|
       if @skirtpattern.save
@@ -78,8 +69,6 @@ class SkirtpatternsController < ApplicationController
   # PATCH/PUT /skirtpatterns/1.json
   def update
     @skirtpattern = Skirtpattern.find(params[:id])
-
-
 
     respond_to do |format|
       if @skirtpattern.update_attributes(skirtpattern_params)
@@ -113,3 +102,4 @@ class SkirtpatternsController < ApplicationController
       params.require(:skirtpattern).permit(:canvas1, :canvas2, :canvas3, :inner_radius, :length, :makepattern, :outer_radius, :skirt_type, :unit, :user_id, :waist, :waistbandLgth, :waistbandWdth)
     end
 end
+

@@ -8,6 +8,7 @@ class Sizes
 		newSize = "#{waist},#{length},#{skirt_type}"
 		@handle.puts(newSize)
 	end
+
 end
 
 
