@@ -1,5 +1,26 @@
 <h2>All User submitted images</h2>
 <hr>
+
+<!-- 
+<%= javascript_tag do %>
+  window.galleriesURL = "<%=j galleries_url %>"; 
+  window.galleries = <%=raw Gallery.limit(10).to_json %>;
+<% end %>
+
+
+<%= content_tag "div", id: "galleries", data: {galleries: Gallery.limit(10)} do %>
+  <div id="loading"> 
+    <img src="http://www.wingshootingusa.org/2012/Images/loading_transparent.gif">
+    Loading gallery...
+  </div>
+  <p>
+    image: <span id="image"></span><br /> 
+    image_comment: <span id="image_comment"></span><br /> 
+    submitted_by: <span id="submitted_by"></span><br /> 
+    created_at: <span id="created_at"></span><br /> 
+  </p>
+<% end %>
+n -->
 <% @galleries.each do |gallery| %>
   <div class="large-3 small-6 columns">
       <%= image_tag gallery.image_url(:thumb_med).to_s %>
@@ -37,3 +58,4 @@
    <%= render "shared/advertisment" %>
 </div>
  </div>
+ 

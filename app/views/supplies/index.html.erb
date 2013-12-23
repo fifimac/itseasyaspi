@@ -1,0 +1,25 @@
+<h1>Supplies List</h1>
+<h2>Before you start sewing, you will need the following items</h2>
+<hr>
+<div class="row">
+  <div class="large-6 columns">
+    <h3>Supplies to Gather</h3>
+    <div class="supplies" id="unbought_supplies">
+        <%= render @unbought_supplies %>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <h3>Supplies Gotten</h3>
+    <div class="supplies" id="bought_supplies">
+        <%= render @bought_supplies %>
+    </div>
+  </div>
+</div>
+<hr>
+<p>Have you thought of anything else to add to the list of supplies?</p>
+<p>If so add a new supply to the list</p>
+<%= link_to "New Supply", new_supply_path, id: "new_link" , :class =>"button secondary", remote: true %>
+
+
+
+

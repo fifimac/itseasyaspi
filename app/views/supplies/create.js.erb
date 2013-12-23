@@ -1,0 +1,4 @@
+$('#new_supply').remove();
+$('#new_link').show();
+$('#unbought_supplies').append('<%= j render(@supply) %>');
+$('#edit_supply_<%= @supply.id %>').submitOnCheck();// this call the submitOnCheck() from the supplies.js file

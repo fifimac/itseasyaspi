@@ -30,6 +30,7 @@ gem 'pdfkit' # for pdf creation of user generated pattern
 gem 'foundation-rails'
 gem 'simple_form'
 gem 'usersizes' , '>=0.0.7'
+gem 'fancybox-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -1,4 +1,7 @@
 Itseasyaspi::Application.routes.draw do
+  resources :supplies
+
+
   resources :skirtpatterns
 
 
@@ -14,10 +17,9 @@ Itseasyaspi::Application.routes.draw do
   devise_for :users
 
   devise_scope :user do
-   match "/users/show" => "devise/registrations#show" 
- end 
+     match "/users/show" => "devise/registrations#show" 
+   end 
   resources :instructions
-
 
   resources :comments do
     resources :replies

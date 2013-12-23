@@ -9,5 +9,4 @@ class HomeController < ApplicationController
                   @skirtpattern = current_user.build_skirtpattern
           end
   end
-
 end

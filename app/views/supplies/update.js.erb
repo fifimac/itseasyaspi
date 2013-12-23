@@ -1,0 +1,5 @@
+<% if @supply.bought? %>
+	$('#edit_supply_<%= @supply.id %>').appendTo('#bought_supplies');
+<% else %>
+	$('#edit_supply_<%= @supply.id %>').appendTo('#unbought_supplies');
+<% end %>

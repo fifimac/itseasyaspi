@@ -1,12 +1,6 @@
 <!-- Content Slider -->
-
     <div class="row">
       <div class="large-12 hide-for-small">
-        <!-- <div id="feature firstStop" data-orbit>
-            <%= image_tag("main_1200x500.jpg", :alt => "completed skirt") %>  
-            <img src="http://placehold.it/1200x500&text=Slide Image 2" alt="slide image">
-            <img src="http://placehold.it/1200x500&text=Slide Image 3" alt="slide image">
-        </div> -->
         <ul class="example-orbit" data-orbit>
           <li> 
             <%= image_tag("main_1200x500.jpg", :alt => "completed skirt") %> 
@@ -17,23 +11,22 @@
                     All you need to do is grab your tape measure and enter your <%= link_to "measurements", pattern_maker_path %> <br>
                     You will whip a circle skirt up in no time following our simple <%= link_to "instructions", instructions_path%>. <br>
                    </p><p> Visit the <%= link_to 'gallery', galleries_path%> to see examples of other users skirts. </p>   
-                   <p>It's as easy as Pi!</p>
-                 
+                   <p>It's as easy as Pi!</p>   
             </div>
           </li> 
-          <li> 
-            <%= image_tag("main_1200x500.jpg", :alt => "completed skirt") %> 
+          <li class="background">
+            <div class="carousel-caption text-center">
+                    <h2>Watch the video</h2>       
+            </div>
+            <a href="#" data-reveal-id="videoModal" class="icon-video"></a>
           </li> 
           
       </ul>
     </div>
   </div>
-
-
   <!-- End Content Slider -->
 
   <!-- Mobile Header -->
-
     <div class="row">
       <div class="large-12 columns show-for-small">
         <%= image_tag("main_510x300.jpg", :alt => "completed skirt") %>
@@ -49,32 +42,37 @@
   <div class="large-12 columns">
     <div class="row">
   	<!-- Thumbnails -->
-      <div class="large-3 small-6 columns">
-        <%= image_tag("thumb_med_eqzoom85.ms.jpeg", :alt => "completed skirt") %>
-        <h6 class="panel">Finished Half Circle skirt</h6>
+      <div class="large-3 small-6 columns ">
+        <a class="fancybox" rel="gallery1" href="/uploads/gallery/image/27/red-felt-circle-skirt.jpg" title="Completed Red Wool Skirt. It swings nicely.">
+          <img src="/uploads/gallery/image/27/thumb_med_red-felt-circle-skirt.jpg">
+          <h6 class="panel">Completed Red Wool Skirt. It swings nicely.</h6>
+        </a>
       </div>
 
       <div class="large-3 small-6 columns">
-         <%= image_tag("thumb_med_images.jpg", :alt => "completed skirt") %>
-        <h6 class="panel">Lovely grey linen skirt</h6>
+        <a class="fancybox" rel="gallery1" href="/uploads/gallery/image/30/Navy_circle_skirt_.JPG" title="Just finished my navy skirt. I am very happy with it.">
+          <img src="/uploads/gallery/image/30/thumb_med_Navy_circle_skirt_.JPG">
+          <h6 class="panel">Just finished my navy skirt. I am very happy with it.</h6>
+        </a>
       </div>
 
       <div class="large-3 small-6 columns">
-        <%= image_tag("thumb_med_images2.jpg", :alt => "completed skirt") %>
-        <h6 class="panel">Just finished my navy skirt. I am very happy with it.</h6>
+         <a class="fancybox" rel="gallery1" href="/uploads/gallery/image/31/cssa_hemclose2.png" title="Rolling the hem on a stretchy red jersey fabric">
+          <img src="/uploads/gallery/image/31/thumb_med_cssa_hemclose2.png">
+          <h6 class="panel">Rolling the hem on a stretchy red jersey fabric</h6>
+         </a>
       </div>
 
       <div class="large-3 small-6 columns">
-        <%= image_tag("thumb_med_Navy_circle_skirt_.JPG", :alt => "completed skirt") %>
-        <h6 class="panel">Making the finishing touches.</h6>
+         <a class="fancybox" rel="gallery1" href="/uploads/gallery/image/33/hem.jpg" title="Final step - Finishing the hem on my gingham skirt">
+          <img src="/uploads/gallery/image/33/thumb_med_hem.jpg">
+          <h6 class="panel">Final step - Finishing the hem on my gingham skirt</h6>
+         </a>
       </div>
   <!-- End Thumbnails -->
     </div>
   </div>
 </div>
-
-<!-- <a class="" href="#"></a> -->
-
 <%= link_to 'See More', galleries_path,:class =>"large button expand" %>
 
 <!-- Tour Buttons --> 
@@ -91,6 +89,14 @@
     <p>Like the look of what you see? Go sign in or go directly to the pattern maker.</p> 
   </li> 
 </ol>
+
+<!-- reveal modal begin -->
+<div id="videoModal" class="reveal-modal small" data-reveal="" style="display: none; opacity: 1; visibility: hidden;">
+  <div class="flex-video" style="display: none;">
+          <iframe width="420" height="315" src="about:blank" frameborder="0" allowfullscreen="" data-src="http://www.youtube.com/embed/DRL1QsGw2W8"></iframe>
+  </div>
+  <a class="close-reveal-modal">×</a>
+</div>
 
 <script>
 $(document).foundation('joyride', 'start');

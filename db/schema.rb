@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131213151312) do
+ActiveRecord::Schema.define(:version => 20131222134713) do
 
   create_table "comments", :force => true do |t|
     t.string   "title"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(:version => 20131213151312) do
 
   create_table "skirtpatterns", :force => true do |t|
     t.integer  "user_id"
-    t.string   "makepattern"
+    t.boolean  "makepattern",   :default => false
     t.string   "unit"
     t.string   "skirt_type"
     t.integer  "waist"
@@ -82,8 +82,15 @@ ActiveRecord::Schema.define(:version => 20131213151312) do
     t.integer  "outer_radius"
     t.integer  "waistbandLgth"
     t.integer  "waistbandWdth"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  create_table "supplies", :force => true do |t|
+    t.string   "name"
+    t.boolean  "bought"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "userprofiles", :force => true do |t|
