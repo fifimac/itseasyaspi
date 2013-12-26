@@ -2135,7 +2135,7 @@ form .row input.column, form .row input.columns, form .row textarea.column, form
 
 /* Label Styles */
 label {
-  font-size: 0.77778rem;
+  font-size: 1rem;
   color: #4d4d4d;
   cursor: pointer;
   display: block;

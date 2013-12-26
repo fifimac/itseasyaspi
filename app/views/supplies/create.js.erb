@@ -1,4 +1,6 @@
+// The create method is changed so that the JavaScript format is set to no redirect. 
+// The create.js.erb template is created to handle this. 
 $('#new_supply').remove();
 $('#new_link').show();
-$('#unbought_supplies').append('<%= j render(@supply) %>');
+$('#unbought_supplies').append('<%= j render(@supply) %>'); //the new supply is added to the ‘#unbought_supplies’ element.
 $('#edit_supply_<%= @supply.id %>').submitOnCheck();// this call the submitOnCheck() from the supplies.js file

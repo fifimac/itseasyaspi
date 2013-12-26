@@ -1,3 +1,4 @@
+//The update.js.erb template implements toggling of the supplies from one list to the other.
 <% if @supply.bought? %>
 	$('#edit_supply_<%= @supply.id %>').appendTo('#bought_supplies');
 <% else %>

@@ -1,6 +1,6 @@
 class SuppliesController < ApplicationController
   def index
-    sleep 5
+    sleep 1
     @unbought_supplies = Supply.where(bought: false)
     @bought_supplies = Supply.where(bought: true)
   end
@@ -11,6 +11,7 @@ class SuppliesController < ApplicationController
 
   def create
     @supply = Supply.create!(params[:supply])
+    #The create method is changed so that the JavaScript format is set to no redirect.
     respond_to do |format|
       format.html {redirect_to supplies_url}
       format.js
