@@ -18,3 +18,17 @@ The intended experience of using the site should be similar to learning a new sk
 
 However the user will not be limited by their physical social limits, as they can engage with other users on the site.
 
+Screen Shots
+------------
+
+##Homepage
+![ScreenShot](https://raw.githubusercontent.com/fifimac/itseasyaspi/master/screenshots/1_Easyaspi-Homepage.jpg)
+
+## Pattern Maker Form
+![ScreenShot](https://raw.githubusercontent.com/fifimac/itseasyaspi/master/screenshots/2_Easyaspi-Pattern-Maker-Form.jpg)
+
+## Custom Pattern Result
+![ScreenShot](https://raw.githubusercontent.com/fifimac/itseasyaspi/master/screenshots/3_Easyaspi-Pattern.jpg)
+
+##Instructions 5of8
+![ScreenShot](https://raw.githubusercontent.com/fifimac/itseasyaspi/master/screenshots/4_Easyaspi-Instructions_5of8.jpg)
